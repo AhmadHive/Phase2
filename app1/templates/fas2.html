@@ -153,6 +153,20 @@
             margin: 0 0 10px 0;
             color: #20bfd6;
         }
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login-link a {
+            color: #20bfd6;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .login-link a:hover {
+            color: #1a9cb0;
+            text-shadow: 0 0 8px rgba(32, 191, 214, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -173,19 +187,18 @@
         </div>
         {% endif %}
 
-        
         <form method="post">
             {% csrf_token %}
             
-            <!-- Team Name Field -->
+            <!-- Username Field (Team Name) -->
             <div class="form-group">
                 <div class="form-input-group">
-                    <label for="id_Team_name">Team Name:</label>
-                    {{ form.Team_name }}
+                    <label for="id_username">Team Name:</label>
+                    {{ form.username }}
                 </div>
-                {% if form.Team_name.errors %}
+                {% if form.username.errors %}
                 <div class="field-errors">
-                    {% for error in form.Team_name.errors %}
+                    {% for error in form.username.errors %}
                     {{ error }}
                     {% endfor %}
                 </div>
@@ -222,7 +235,7 @@
                 {% endif %}
             </div>
 
-            <!-- Non-field errors -->
+            
             {% if form.non_field_errors %}
             <div class="form-group">
                 <div class="field-errors">
@@ -235,6 +248,10 @@
 
             <button type="submit" class="btn-submit">CREATE TEAM ACCOUNT</button>
         </form>
+
+        <div class="login-link">
+            <p>Already have a team? <a href="{% url 'Login' %}">Login here</a></p>
+        </div>
     </div>
 </body>
 </html>

@@ -99,6 +99,11 @@
             color: #e74c3c;
             border-left-color: #e74c3c;
         }
+        .alert-success { 
+            background: rgba(39, 174, 96, 0.1); 
+            color: #27ae60;
+            border-left-color: #27ae60;
+        }
         .glow-text {
             text-shadow: 0 0 10px rgba(32, 191, 214, 0.5);
         }
@@ -158,23 +163,20 @@
             <h2>Team Login</h2>
         </div>
 
-        
         {% if messages %}
         <div class="messages">
             {% for message in messages %}
-            <div class="alert alert-error">
+            <div class="alert alert-{% if message.tags == 'error' %}error{% else %}success{% endif %}">
                 {{ message }}
             </div>
             {% endfor %}
         </div>
         {% endif %}
 
-       
-
         <form method="post">
             {% csrf_token %}
             
-            
+            <!-- Username Field -->
             <div class="form-group">
                 <div class="form-input-group">
                     <label for="username">Team Name:</label>
@@ -182,7 +184,7 @@
                 </div>
             </div>
 
-            
+            <!-- Password Field -->
             <div class="form-group">
                 <div class="form-input-group">
                     <label for="password">Password:</label>

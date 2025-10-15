@@ -7,5 +7,5 @@ urlpatterns=[
     path('submit',views.submit,name='submit'),
     path('submitted_successfully',views.successfully,name='submitted_successfully'),
     path('Login',views.Login,name='Login'),
-    path('list',views.project_list,name='list')
+    path('list',views.project_list,name='project_list')
 ]

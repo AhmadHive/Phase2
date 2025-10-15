@@ -112,6 +112,11 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 12px rgba(32, 191, 214, 0.4);
         }
+        .project-meta {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -129,28 +134,26 @@
                 {% for project in projects %}  
                 <div class="project-card">
                     <div class="project-team">
-                          {{ project.Team.Team_name|default:project.Team.username }} Team
+                        {{ project.Team.username }} Team
                     </div>
                     <a href="{{ project.project_url }}" class="project-url" target="_blank">
-                          View Project
+                        View Project
                     </a>
-                    <div class="project-meta" style="margin-top: 10px; color: #666; font-size: 14px;">
+                    <div class="project-meta">
                         Submitted at: {{ project.Submitted_at }}
                     </div>
                 </div>  
                 {% endfor %}
             {% else %}
                 <div class="empty-state">
-                    <div class="icon"></div>
+                    <div class="icon">📁</div>
                     <h3>No Projects Submitted Yet</h3>
                     <p>Be the first team to submit your amazing project!</p>
                 </div>
             {% endif %}
         </div>
 
-        <div class="back-link">
-            <a href="{% url 'Home' %}">← Return to Home</a>
-        </div>
+       
     </div>
 </body>
 </html>

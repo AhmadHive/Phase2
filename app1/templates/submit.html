@@ -57,10 +57,7 @@
             color: #2c3e50;
             font-size: 16px;
         }
-        input[type="text"],
-        input[type="url"],
-        textarea,
-        select {
+        input[type="url"] {
             width: 100%;
             padding: 12px 15px;
             border: 2px solid #e0e0e0;
@@ -70,10 +67,7 @@
             transition: all 0.3s ease;
             background: rgba(255, 255, 255, 0.9);
         }
-        input[type="text"]:focus,
-        input[type="url"]:focus,
-        textarea:focus,
-        select:focus {
+        input[type="url"]:focus {
             border-color: #20bfd6;
             box-shadow: 0 0 10px rgba(32, 191, 214, 0.2);
             outline: none;
@@ -161,6 +155,20 @@
                 opacity: 1;
             }
         }
+        .navigation-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .navigation-links a {
+            color: #20bfd6;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .navigation-links a:hover {
+            color: #1a9cb0;
+        }
     </style>
 </head>
 <body>
@@ -172,7 +180,7 @@
         
         <!-- Display team information -->
         <div class="team-info">
-            <strong>Team:</strong> {{ request.user.Team_name }}
+            <strong>Team:</strong> {{ request.user.username }}
         </div>
 
         <!-- Display messages -->
@@ -189,25 +197,23 @@
         <form method="post">
             {% csrf_token %}
             
-            <!-- Display form fields -->
-            {% for field in form %}
+            <!-- Project URL Field -->
             <div class="form-group">
                 <div class="form-input-group">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                    {{ field }}
-                    {% if field.help_text %}
-                    <small class="help-text">{{ field.help_text }}</small>
+                    <label for="id_project_url">Project URL:</label>
+                    {{ form.project_url }}
+                    {% if form.project_url.help_text %}
+                    <small class="help-text">{{ form.project_url.help_text }}</small>
                     {% endif %}
                 </div>
-                {% if field.errors %}
+                {% if form.project_url.errors %}
                 <div class="field-errors">
-                    {% for error in field.errors %}
+                    {% for error in form.project_url.errors %}
                     {{ error }}
                     {% endfor %}
                 </div>
                 {% endif %}
             </div>
-            {% endfor %}
 
             <!-- Non-field errors -->
             {% if form.non_field_errors %}
@@ -222,6 +228,11 @@
 
             <button type="submit" class="btn-submit">SUBMIT PROJECT</button>
         </form>
+
+        <div class="navigation-links">
+            <a href="{% url 'Home' %}">← Home</a>
+            <a href="{% url 'project_list' %}">View Projects</a>
+        </div>
     </div>
 </body>
 </html>
