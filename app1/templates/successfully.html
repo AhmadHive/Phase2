@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IEEE AAU Beyond Limits Hackathon</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(32, 191, 214, 0.3);
+            border: 1px solid rgba(32, 191, 214, 0.2);
+            text-align: center;
+        }
+        .success-icon {
+            font-size: 80px;
+            color: #20bfd6;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px rgba(32, 191, 214, 0.5);
+            animation: pulse 2s infinite;
+        }
+        .success-message {
+            color: #2c3e50;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(32, 191, 214, 0.2);
+        }
+        .sub-message {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        .button {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #20bfd6, #1a9cb0);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(32, 191, 214, 0.4);
+        }
+        .button:hover {
+            background: linear-gradient(135deg, #1a9cb0, #20bfd6);
+            box-shadow: 0 8px 25px rgba(32, 191, 214, 0.6);
+            transform: translateY(-2px);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 20px rgba(32, 191, 214, 0.5);
+            }
+            50% {
+                transform: scale(1.05);
+                text-shadow: 0 0 30px rgba(32, 191, 214, 0.8);
+            }
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 20px rgba(32, 191, 214, 0.5);
+            }
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(32, 191, 214, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✓</div>
+        <div class="success-message glow-text">Submitted Successfully</div>
+        <div class="sub-message">
+            Your project document has been submitted successfully.<br>
+            Thank you for participating in IEEE AAU Beyond Limits Hackathon.
+        </div>
+        <a href="{% url 'Home' %}" class="button">RETURN TO HOME</a>
+    </div>
+</body>
+</html>

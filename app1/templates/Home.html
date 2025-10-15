@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IEEE AAU Beyond Limits Hackathon</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 50px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(32, 191, 214, 0.3);
+            border: 1px solid rgba(32, 191, 214, 0.2);
+            text-align: center;
+        }
+        .header {
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #20bfd6;
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(32, 191, 214, 0.3);
+        }
+        .header h2 {
+            color: #2c3e50;
+            font-size: 20px;
+            font-weight: normal;
+        }
+        .summary {
+            background: linear-gradient(135deg, rgba(32, 191, 214, 0.1), rgba(26, 156, 176, 0.1));
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 1px solid rgba(32, 191, 214, 0.3);
+            text-align: center;
+        }
+        .summary h3 {
+            color: #20bfd6;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .summary p {
+            color: #2c3e50;
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .submit-button {
+            padding: 16px 50px;
+            background: linear-gradient(135deg, #20bfd6, #1a9cb0);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(32, 191, 214, 0.4);
+            margin-top: 20px;
+        }
+        .submit-button:hover {
+            background: linear-gradient(135deg, #1a9cb0, #20bfd6);
+            box-shadow: 0 8px 25px rgba(32, 191, 214, 0.6);
+            transform: translateY(-2px);
+        }
+        .ieee-logo {
+            font-size: 48px;
+            color: #20bfd6;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(32, 191, 214, 0.5);
+        }
+        .mission-text {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-top: 30px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            
+            <h1>IEEE AAU BEYOND LIMITS PHASE TWO</h1>
+            <h2>Hackathon 2025</h2>
+        </div>
+
+        <div class="summary">
+            <h3>About the Competition</h3>
+            <p>
+                This hackathon is presented by <strong>IEEE Amman Arab University</strong> 
+                to support and empower <strong>people with disabilities</strong>. 
+                Join us in creating innovative solutions that break barriers and 
+                build a more inclusive future for everyone.
+            </p>
+        </div>
+
+        <a href="{% url 'submit' %}" class="submit-button">
+            Submit Your Project
+        </a>
+
+        <div class="mission-text">
+            Innovating for a more accessible world
+        </div>
+    </div>
+</body>
+</html>

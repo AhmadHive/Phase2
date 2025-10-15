@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - IEEE AAU Beyond Limits</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(32, 191, 214, 0.3);
+            border: 1px solid rgba(32, 191, 214, 0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #20bfd6;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(32, 191, 214, 0.3);
+        }
+        .header h2 {
+            color: #2c3e50;
+            font-size: 20px;
+            font-weight: normal;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #20bfd6;
+            box-shadow: 0 0 10px rgba(32, 191, 214, 0.2);
+            outline: none;
+        }
+        .btn-submit {
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #20bfd6, #1a9cb0);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(32, 191, 214, 0.4);
+            margin-top: 10px;
+        }
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #1a9cb0, #20bfd6);
+            box-shadow: 0 8px 25px rgba(32, 191, 214, 0.6);
+            transform: translateY(-2px);
+        }
+        .messages {
+            margin-bottom: 20px;
+        }
+        .alert {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid;
+            font-weight: bold;
+        }
+        .alert-error { 
+            background: rgba(231, 76, 60, 0.1); 
+            color: #e74c3c;
+            border-left-color: #e74c3c;
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(32, 191, 214, 0.5);
+        }
+        .form-input-group {
+            position: relative;
+        }
+        .form-input-group:focus-within::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #20bfd6, #1a9cb0);
+            border-radius: 10px;
+            z-index: -1;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from {
+                opacity: 0.5;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .login-info {
+            background: linear-gradient(135deg, rgba(32, 191, 214, 0.1), rgba(26, 156, 176, 0.1));
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid rgba(32, 191, 214, 0.3);
+            font-size: 14px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .register-link a {
+            color: #20bfd6;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        .register-link a:hover {
+            color: #1a9cb0;
+            text-shadow: 0 0 8px rgba(32, 191, 214, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="glow-text">IEEE AAU BEYOND LIMITS</h1>
+            <h2>Team Login</h2>
+        </div>
+
+        
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-error">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+       
+
+        <form method="post">
+            {% csrf_token %}
+            
+            
+            <div class="form-group">
+                <div class="form-input-group">
+                    <label for="username">Team Name:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+            </div>
+
+            
+            <div class="form-group">
+                <div class="form-input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">LOGIN TO YOUR TEAM</button>
+        </form>
+
+        <div class="register-link">
+            <p>Don't have a team? <a href="{% url 'regist' %}">Register your team here</a></p>
+        </div>
+    </div>
+</body>
+</html>

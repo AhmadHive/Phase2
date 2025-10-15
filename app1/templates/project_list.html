@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - IEEE AAU Beyond Limits</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(32, 191, 214, 0.3);
+            border: 1px solid rgba(32, 191, 214, 0.2);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #20bfd6;
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(32, 191, 214, 0.3);
+        }
+        .projects-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 240, 240, 0.9));
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid rgba(32, 191, 214, 0.3);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(32, 191, 214, 0.3);
+            border-color: #20bfd6;
+        }
+        .project-team {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .project-url {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #20bfd6, #1a9cb0);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(32, 191, 214, 0.4);
+        }
+        .project-url:hover {
+            background: linear-gradient(135deg, #1a9cb0, #20bfd6);
+            box-shadow: 0 6px 18px rgba(32, 191, 214, 0.6);
+            transform: translateY(-2px);
+        }
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #666;
+        }
+        .empty-state .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #20bfd6;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-link a {
+            color: #20bfd6;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            padding: 10px 20px;
+            border: 2px solid #20bfd6;
+            border-radius: 8px;
+        }
+        .back-link a:hover {
+            color: #1a9cb0;
+            border-color: #1a9cb0;
+            background: rgba(32, 191, 214, 0.1);
+        }
+        .glow-text {
+            text-shadow: 0 0 10px rgba(32, 191, 214, 0.5);
+        }
+        .projects-count {
+            background: linear-gradient(135deg, #20bfd6, #1a9cb0);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(32, 191, 214, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="glow-text">IEEE AAU BEYOND LIMITS</h1>
+            <h2>Submitted Projects</h2>
+            <div class="projects-count">
+                {{ projects.count }} Project{{ projects.count|pluralize }} Submitted
+            </div>
+        </div>
+
+        <div class="projects-grid">
+            {% if projects %}
+                {% for project in projects %}  
+                <div class="project-card">
+                    <div class="project-team">
+                          {{ project.Team.Team_name|default:project.Team.username }} Team
+                    </div>
+                    <a href="{{ project.project_url }}" class="project-url" target="_blank">
+                          View Project
+                    </a>
+                    <div class="project-meta" style="margin-top: 10px; color: #666; font-size: 14px;">
+                        Submitted at: {{ project.Submitted_at }}
+                    </div>
+                </div>  
+                {% endfor %}
+            {% else %}
+                <div class="empty-state">
+                    <div class="icon"></div>
+                    <h3>No Projects Submitted Yet</h3>
+                    <p>Be the first team to submit your amazing project!</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="back-link">
+            <a href="{% url 'Home' %}">← Return to Home</a>
+        </div>
+    </div>
+</body>
+</html>
